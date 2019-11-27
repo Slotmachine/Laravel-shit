@@ -1,72 +1,75 @@
 @extends('user.master')
-@section('title','จัดการข้อมูล')
 @section('content')
-
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
-			<h1 class="text-center" style="margin-top: 40px; margin-bottom: 30px;">เพิ่มข้อมูลผู้ใช้ระบบ</h1>
+			<h1 style="margin-top: 40px; margin-bottom: 50px; font-size: 50px; text-align: center;">กรอกข้อมูลไซส์เสื้อ</h1>
 			<form method="post" action="{{route('store-user')}}">
 				{{csrf_field()}}
 				<div class="container">
 					<div class="row">
 						<div class="col-md-6">
+							<div class="form-group">
 
-							<div class="form-group">
-								คุณอยู่สีอะไร :
-								<div class="form-check-inline">
-									<label class="form-check-label" for="radio1">
-										<input type="radio" class="form-check-input" id="0" name="team" value="0" checked>สีขาว
-									</label>
+								<div class="row">
+									<div class="col-md-6">
+										ชื่อ :
+										<input type="text" name="firstname" class="form-control" placeholder="ชื่อ" required="required">
+									</div>
+									<div class="col-md-6">
+										นามสกุล :
+										<input type="text" name="lasname" class="form-control" placeholder="นามสกุล" required="required">
+									</div>
+
 								</div>
-								<div class="form-check-inline">
-									<label class="form-check-label" for="radio2">
-										<input type="radio" class="form-check-input" id="1" name="team" value="1">สีฟ้า
-									</label>
-								</div>
 							</div>
 							<div class="form-group">
-								ชื่อ :
-								<input type="text" name="firstname" class="form-control" placeholder="ชื่อ">
+								ขนาดความกว้างของไหล่ :
+								<input type="text" name="shoulder_width" class="form-control" placeholder="ขนาดความกว้างของไหล่ (นิ้ว)" required="required">
 							</div>
 							<div class="form-group">
-								นามสกุล :
-								<input type="text" name="lasname" class="form-control" placeholder="นามสกุล">
+								ขนาดความยาวของเสื้อ :
+								<input type="text" name="shirts_long" class="form-control" placeholder="ขนาดความยาวของเสื้อ จากท้ายทอย/ต้นคอจนถึงตะโพก (นิ้ว) :" required="required">
 							</div>
 							<div class="form-group">
-								ขนาดความกว้างของไหล่ (นิ้ว) ของท่าน :
-								<input type="text" name="shoulder_width" class="form-control" placeholder="ขนาดความกว้างของไหล่">
+								ขนาดรอบอก​​ :
+								<input type="text" name="chest_size" class="form-control" placeholder="ขนาดรอบอก​ (นิ้ว)​ " required="required">
 							</div>
 							<div class="form-group">
-								ขนาดความยาวของเสื้อ จากท้ายทอย/ต้นคอจนถึงตะโพก (นิ้ว) :
-								<input type="text" name="shirts_long" class="form-control" placeholder="ขนาดความยาวของเสื้อ จากท้ายทอย/ต้นคอจนถึงตะโพก (นิ้ว) :">
-							</div>
-							<div class="form-group">
-								ขนาดรอบอก​ (นิ้ว)​ :
-								<input type="text" name="chest_size" class="form-control" placeholder="ขนาดรอบอก​ (นิ้ว)​ ">
-							</div>
-							<div class="form-group">
-								<div class="form-group">
-									<label for="sel1">ไซส์ :</label>
-									<select class="form-control" id="sel1" name="size" >
-										<option>S</option>
-										<option>M</option>
-										<option>L</option>
-										<option>XL</option>
-									</select>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="sel1">คุณอยู่สีอะไร :</label>
+											<select class="form-control" id="sel1" name="team">
+												<option value="0">สีขาว</option>
+												<option value="1">สีฟ้า</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="sel1">ไซส์ :</label>
+											<select class="form-control" id="sel1" name="size">
+												<option>S</option>
+												<option>M</option>
+												<option>L</option>
+												<option>XL</option>
+											</select>
+										</div>
+									</div>
 								</div>
 							</div>
 							<div class="form-group">
 								ข้อเสนอแนะอื่นๆ เพิ่มเติม​ :
-								<input type="text" name="comment" class="form-control" value=" ">
+								<input type="text" name="comment" class="form-control" value="ไม่มี">
 							</div>
 							<div class="form-group">
 								เบอร์โทรศัพท์ :
-								<input type="text" name="phone" class="form-control" placeholder="08xxxxxxxx">
+								<input type="text" name="phone" class="form-control" placeholder="กรุณากรอก เบอ์โทรศัพท์ เช่น 08xxxxxxxx" required="required">
 							</div>
 							<div class="form-group">
 								E-mail​ :
-								<input type="text" name="email" class="form-control" placeholder="E-mail">
+								<input type="email" name="email" class="form-control" placeholder="กรุณากรอก E-mail เช่น example@cmu.ac.th" required="required">
 							</div>
 						</div>
 						<div class="col-md-6">
@@ -80,7 +83,8 @@
 										<br><br>
 										<div class="form-check-inline">
 											<label class="form-check-label" for="radio1">
-												<input type="radio" class="form-check-input" id="0" name="join_activity" value="1" checked>สามารถเข้าร่วมเดินขบวนพาเหรดได้
+												<input type="radio" class="form-check-input" id="0" name="join_activity" value="1" checked>
+												<b>สามารถเข้าร่วมเดินขบวนพาเหรดได้</b>
 											</label>
 										</div>
 										<div class="form-check-inline">
@@ -94,14 +98,15 @@
 
 							<div class="form-group">
 								<div class="container">
-									<div class="jumbotron">
+									<div class="jumbotron" style="margin-top: 40px;">
 										ท่านสามารถเข้าร่วมพิธีมอบรางวัลนักกีฬา <br>
 										ในวันเสาร์ที่ 22 ธันวาคม 2561 เวลา 17.00 น. เป็นต้นไป <br>
 										ณ ลานน้ำพุหน้าหอประชุมมหาวิทยาลัยเชียงใหม่<br>
 										<br><br>
 										<div class="form-check-inline">
 											<label class="form-check-label" for="radio3">
-												<input type="radio" class="form-check-input" id="0" name="join_activityed" value="1" checked>สามารถเข้าร่วมเดินขบวนพาเหรดได้
+												<input type="radio" class="form-check-input" id="0" name="join_activityed" value="1" checked>
+												<b>สามารถเข้าร่วมเดินขบวนพาเหรดได้</b>
 											</label>
 										</div>
 										<div class="form-check-inline">
@@ -127,4 +132,5 @@
 		</div>
 	</div>
 </div>
+
 @endsection
